@@ -1,0 +1,24 @@
+# API FabLab
+
+API de prêt de matériel du FabLab associatif : imprimantes 3D, découpeuse laser, perceuses, ponceuses.
+Spring Boot, Java 17, Maven, PostgreSQL et Flyway.
+
+## Lancer
+
+    ./mvnw spring-boot:run -Dspring-boot.run.profiles=h2      # sans base installée
+    ./mvnw test
+
+Avec PostgreSQL : variables `DB_URL`, `DB_USER`, `DB_PASSWORD` (voir `application.properties`).
+
+## Points d'entrée
+
+- `GET  /api/materiels` : le matériel et sa disponibilité
+- `POST /api/prets` : emprunter, corps `{"adherent": "ADH-042", "materiel": "IMP-3D-01", "duree": 7}`
+- `PUT  /api/prets/{id}/retour` : rendre
+- `GET  /actuator/health`, `GET /actuator/info`
+
+## Règles
+
+- Un prêt dure de 1 à 14 jours.
+- Un adhérent a au plus 3 prêts en cours.
+- Un matériel déjà sorti ne peut pas être prêté.

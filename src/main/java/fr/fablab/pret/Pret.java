@@ -1,0 +1,80 @@
+package fr.fablab.pret;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+@Entity
+public class Pret {
+
+    public static final int DUREE_MAX_JOURS = 14;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String adherent;
+    private String materiel;
+    private LocalDate debut;
+    private LocalDate retourPrevu;
+    private LocalDate dateRetour;
+
+    protected Pret() {
+    }
+
+    private Pret(String adherent, String materiel, LocalDate debut, LocalDate retourPrevu) {
+        this.adherent = adherent;
+        this.materiel = materiel;
+        this.debut = debut;
+        this.retourPrevu = retourPrevu;
+    }
+
+    public static Pret creer(String adherent, String materiel, LocalDate debut, int dureeJours) {
+        if (dureeJours < 1 || dureeJours > DUREE_MAX_JOURS + 1) {
+            throw new DureeInvalide(dureeJours);
+        }
+        return new Pret(adherent, materiel, debut, debut.plusDays(dureeJours));
+    }
+
+    public void rendre(LocalDate le) {
+        if (dateRetour != null) {
+            throw new PretDejaRendu(id);
+        }
+        this.dateRetour = le;
+    }
+
+    public boolean estEnCours() {
+        return dateRetour == null;
+    }
+
+    public boolean estEnRetard(LocalDate aujourdhui) {
+        return estEnCours() && retourPrevu.isBefore(aujourdhui);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getAdherent() {
+        return adherent;
+    }
+
+    public String getMateriel() {
+        return materiel;
+    }
+
+    public LocalDate getDebut() {
+        return debut;
+    }
+
+    public LocalDate getRetourPrevu() {
+        return retourPrevu;
+    }
+
+    public Optional<LocalDate> getDateRetour() {
+        return Optional.ofNullable(dateRetour);
+    }
+}
