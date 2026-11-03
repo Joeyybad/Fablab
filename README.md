@@ -10,6 +10,10 @@ Spring Boot, Java 17, Maven, PostgreSQL et Flyway.
 
 Avec PostgreSQL : variables `DB_URL`, `DB_USER`, `DB_PASSWORD` (voir `application.properties`).
 
+## Développer
+
+Une branche par fonctionnalité, partie de develop. Les tests passent avant toute fusion.
+
 ## Points d'entrée
 
 - `GET  /api/materiels` : le matériel et sa disponibilité
