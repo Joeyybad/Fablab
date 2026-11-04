@@ -42,6 +42,16 @@ class PretTest {
     }
 
     @Test
+    void un_pret_rendu_n_est_plus_en_cours_ni_en_retard() {
+        Pret pret = Pret.creer("ADH-042", "IMP-3D-01", LUNDI, 7);
+
+        pret.rendre(LUNDI.plusDays(10));
+
+        assertThat(pret.estEnCours()).isFalse();
+        assertThat(pret.estEnRetard(LUNDI.plusDays(20))).isFalse();
+    }
+
+    @Test
     void un_pret_ne_se_rend_pas_deux_fois() {
         Pret pret = Pret.creer("ADH-042", "IMP-3D-01", LUNDI, 7);
         pret.rendre(LUNDI.plusDays(3));
