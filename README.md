@@ -18,6 +18,7 @@ Une branche par fonctionnalité, partie de develop. Les tests passent avant tout
 
 - `GET  /api/materiels` : le matériel et sa disponibilité
 - `POST /api/prets` : emprunter, corps `{"adherent": "ADH-042", "materiel": "IMP-3D-01", "duree": 7}`
+- `PUT  /api/prets/{id}/prolongation` : prolonger de 7 jours
 - `PUT  /api/prets/{id}/retour` : rendre
 - `GET  /actuator/health`, `GET /actuator/info`
 
@@ -26,3 +27,4 @@ Une branche par fonctionnalité, partie de develop. Les tests passent avant tout
 - Un prêt dure de 1 à 14 jours.
 - Un adhérent a au plus 3 prêts en cours.
 - Un matériel déjà sorti ne peut pas être prêté.
+- Un prêt se prolonge une seule fois, de 7 jours au plus : 21 jours au total.
