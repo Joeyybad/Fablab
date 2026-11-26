@@ -12,7 +12,11 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+          cache: maven
       - run: ./mvnw -B verify
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: rapports-tests, path: target/surefire-reports }
   packages:
     needs: test
     runs-on: ubuntu-latest
@@ -22,6 +26,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+          cache: maven
       - run: ./mvnw -B package -DskipTests
       - uses: actions/upload-artifact@v7
         with: { name: fablab-api, path: target/*.jar }
