@@ -8,10 +8,7 @@
         - uses: actions/checkout@v7
         - uses: actions/setup-java@v6
           with: { distribution: temurin, java-version: 17, cache: maven }
-        - run: ./mvnw -B verify # unitaires, ArchUnit, JaCoCo
-        - uses: actions/upload-artifact@v7
-          if: always()
-          with: { name: rapports, path: target/site/jacoco }
+        - run: ./mvnw -B verify # unitaires
     package:
       needs: test
       runs-on: ubuntu-latest
