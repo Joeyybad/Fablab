@@ -1,5 +1,7 @@
 # API FabLab
 
+[![CI FabLab](https://github.com/Joeyybad/Fablab/actions/workflows/ci.yml/badge.svg)](https://github.com/Joeyybad/Fablab/actions/workflows/ci.yml)
+
 API de prêt de matériel du FabLab associatif : imprimantes 3D, découpeuse laser, perceuses, ponceuses.
 Spring Boot, Java 17, Maven, PostgreSQL et Flyway.
 
