@@ -16,7 +16,6 @@
       needs: test
       runs-on: ubuntu-latest
       steps:
-        - ...
         - run: ./mvnw -B package -DskipTests
         - uses: actions/upload-artifact@v7
           with: { name: fablab-api, path: target/*.jar }
