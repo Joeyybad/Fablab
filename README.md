@@ -10,6 +10,10 @@ Spring Boot, Java 17, Maven, PostgreSQL et Flyway.
 
 Avec PostgreSQL : variables `DB_URL`, `DB_USER`, `DB_PASSWORD` (voir `application.properties`).
 
+## Développer
+
+Une branche par fonctionnalité, partie de develop. Les tests passent avant toute fusion.
+
 ## Points d'entrée
 
 - `GET  /api/materiels` : le matériel et sa disponibilité
@@ -22,3 +26,5 @@ Avec PostgreSQL : variables `DB_URL`, `DB_USER`, `DB_PASSWORD` (voir `applicatio
 - Un prêt dure de 1 à 14 jours.
 - Un adhérent a au plus 3 prêts en cours.
 - Un matériel déjà sorti ne peut pas être prêté.
+- Un retard coûte 0,50 € par jour.
+- Un prêt se prolonge une seule fois, de 7 jours au plus : 21 jours au total.
