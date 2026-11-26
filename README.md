@@ -27,3 +27,4 @@ Une branche par fonctionnalité, partie de develop. Les tests passent avant tout
 - Un adhérent a au plus 3 prêts en cours.
 - Un matériel déjà sorti ne peut pas être prêté.
 - Un retard coûte 0,50 € par jour.
+- Un prêt se prolonge une seule fois, de 7 jours au plus : 21 jours au total.
